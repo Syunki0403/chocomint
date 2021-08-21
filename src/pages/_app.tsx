@@ -6,6 +6,7 @@ import { CssBaseline } from '@material-ui/core';
 import { ThemeProvider } from 'styled-components';
 import theme from '../styles/js/theme';
 import store from '../reducks/store';
+import '../styles/css/normalize.css';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (

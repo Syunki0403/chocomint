@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TUser } from '../../types/User';
+import { db } from '../../firebase/index';
 
 export type UserState = {
   user: TUser;

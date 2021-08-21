@@ -18,8 +18,6 @@ const Home: React.FC = () => {
     }
   };
 
-  console.log(userState);
-
   return (
     <div>
       <p>Reduxのtest</p>
