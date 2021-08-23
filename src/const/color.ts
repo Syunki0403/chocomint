@@ -1,5 +1,5 @@
 export const COLORS = {
-  LINE: '#16c464',
-  PRIMARY: '#226cd6',
-  TEXT_GREEN: '#13bd7b',
+  MINT: '#29CDB5',
+  LIGHT_MINT: '#03DAC5',
+  DARK_MINT: '#005457',
 };
