@@ -8,7 +8,15 @@ import theme from '../styles/js/theme';
 import store from '../reducks/store';
 import '../styles/css/normalize.css';
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+  React.useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side');
+    if (jssStyles && jssStyles.parentElement) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
+
   return (
     <Provider store={store()}>
       <StylesProvider injectFirst>
