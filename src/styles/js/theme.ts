@@ -52,7 +52,7 @@ const theme = createTheme({
         minWidth: 200,
       },
       input: {
-        padding: '10.5px 14px',
+        padding: '10.5px 12px',
       },
     },
     MuiMenuItem: {
