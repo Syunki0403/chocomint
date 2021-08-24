@@ -9,9 +9,9 @@ import { CssBaseline } from '@material-ui/core';
 /* js */
 import theme from '../styles/js/theme';
 /* css */
+import '../styles/css/normalize.css';
 import 'tailwindcss/tailwind.css';
 import '../styles/css/global.css';
-import '../styles/css/normalize.css';
 
 export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   React.useEffect(() => {
