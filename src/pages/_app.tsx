@@ -1,11 +1,16 @@
 import React from 'react';
 import { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+import store from '../reducks/store';
+/* material-ui */
 import { MuiThemeProvider, StylesProvider } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
-import { ThemeProvider } from 'styled-components';
+/* js */
 import theme from '../styles/js/theme';
-import store from '../reducks/store';
+/* css */
+import 'tailwindcss/tailwind.css';
+import '../styles/css/global.css';
 import '../styles/css/normalize.css';
 
 export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
