@@ -77,7 +77,7 @@ const LabelAndTextField = ({
 
 const RequiredMsg = styled.span`
   margin-left: 3px;
-  font-size: 70%;
+  font-size: 80%;
   color: red;
   vertical-align: 1px;
 `;

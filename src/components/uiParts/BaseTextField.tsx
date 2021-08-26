@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 /* material-ui */
 import TextField from '@material-ui/core/TextField';
-import { withStyles } from '@material-ui/core/styles';
 
 export type TSize = 'medium' | 'small';
 export type TVariant = 'filled' | 'outlined' | 'standard';
@@ -42,16 +41,6 @@ const BaseTextField = ({
   multiline = false,
   rows,
 }: TBaseTextField) => {
-  const CustomTextField = withStyles({
-    root: {
-      '& .MuiOutlinedInput-root': {
-        '&.Mui-focused fieldset': {
-          borderColor: 'grey',
-        },
-      },
-    },
-  })(TextField);
-
   const inputEl = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -61,7 +50,7 @@ const BaseTextField = ({
   }, []);
 
   return (
-    <CustomTextField
+    <TextField
       inputRef={inputEl}
       placeholder={placeholder ? `例：${placeholder} ` : ''}
       {...{
