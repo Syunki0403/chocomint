@@ -6,6 +6,8 @@ import { userSlice } from '../reducks/slices/user';
 import { UserState } from '../reducks/slices/user';
 /* types */
 import { TUser } from '../types/User';
+/* components */
+import { FirstViewPC } from '../components/pages/home/index';
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
@@ -20,11 +22,7 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <p>Reduxのtest</p>
-      <p>{userState.user.id}</p>
-      <p>{userState.user.name}</p>
-      <p>{userState.user.email}</p>
-      <p>{userState.user.password}</p>
+      <FirstViewPC />
     </div>
   );
 };
