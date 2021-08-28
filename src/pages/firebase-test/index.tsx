@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getUser } from 'src/firebase/user';
+import { getUser } from 'src/modules/user';
 
 const FirebaseTest: React.FC = () => {
   useEffect(() => {
@@ -7,11 +7,7 @@ const FirebaseTest: React.FC = () => {
     console.log(user, '________user');
   }, []);
 
-  return (
-    <div>
-      aaaaaa
-    </div>
-  );
+  return <div>aaaaaa</div>;
 };
 
 export default FirebaseTest;

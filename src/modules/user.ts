@@ -1,18 +1,17 @@
-import firebase, { db } from './index';
+import { db } from '../firebase/index';
 
 export const getUser = async () => {
   try {
     const uid = 'Gc6R90CFKaGWT02s4OGi';
-    const colRef = db.connection("users").doc(uid);
-    const col = await colRef.get();
+    const colRef = db.collection('users').doc(uid);
+    const colDoc = await colRef.get();
 
-    if (col.exists) {
-      console.log(col, '_________col');
+    if (colDoc.exists) {
+      console.log(colDoc.data());
     } else {
       console.log('とれなかったよ');
     }
   } catch (e) {
     console.log(e, '___________e');
   }
-
 };
