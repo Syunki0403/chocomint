@@ -1,10 +1,10 @@
-/* body {
-    font-family: "RocknRoll One", sans-serif;
-} */
+html,
+body {
+    /* font-family: "RocknRoll One", sans-serif; */
+    color: rgb(55, 51, 49);
+}
 
-/**
- * ホーム
- */
+/********** ホーム **********/
 .firstview-section {
     position: relative;
     height: 70vh;
@@ -30,6 +30,92 @@
     /* padding-top: 5vh; */
     position: absolute;
     transform: translate(-50%, -50%);
-    top: 50%;
+    top: 55%;
     left: 50%;
+}
+
+.home-contents_component-wrap {
+    position: relative;
+}
+
+.home-contents_component {
+    width: 60%;
+    margin: 0 auto;
+    padding: 100px 0 100px;
+}
+
+.home-contents_component h2 {
+    color: #29cdb5;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.component_about-chocomintou p {
+    line-height: 250%;
+    font-size: 1.1rem;
+}
+
+/********************************
+
+	スマートフォン
+
+********************************/
+@media only screen and (max-width: 767px) {
+    /********** ホーム **********/
+    .firstview-section {
+        position: relative;
+        height: 70vh;
+        background: rgb(41, 205, 181);
+        z-index: 0;
+    }
+
+    .firstview-section_contents {
+        width: 100%;
+        top: 50%;
+    }
+
+    .firstview-section_contents_text {
+        font-size: 7vw;
+    }
+
+    .firstview-section_contents_img {
+        width: 70%;
+        margin: -1rem auto 1rem;
+    }
+
+    .home-contents_component {
+        width: 80%;
+        margin: 0 auto;
+        padding: 30px 0 30px;
+    }
+
+    .home-contents_component h2 {
+        position: relative;
+        color: #29cdb5;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+
+    .component_about-chocomintou {
+        padding-bottom: 60px;
+    }
+
+    .component_about-chocomintou p {
+        line-height: 170%;
+        font-size: 1rem;
+    }
+
+    .component_about-chocomintou::after {
+        position: absolute;
+        content: "";
+        display: block;
+        background-image: url("../../image/wave.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 100px;
+        bottom: 0px;
+        left: 0;
+        z-index: -1;
+    }
 }

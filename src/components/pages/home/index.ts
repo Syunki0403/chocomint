@@ -1,1 +1,2 @@
-export { default as FirstViewPC } from './FirstViewPC';
+export { default as FirstView } from './FirstView';
+export { default as AboutChocomintou } from './AboutChocomintou';
