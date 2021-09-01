@@ -60,6 +60,18 @@ const theme = createTheme({
         minHeight: 40,
       },
     },
+    MuiCard: {
+      root: {
+        maxWidth: 345,
+        width: '70vw',
+      },
+    },
+    MuiCardMedia: {
+      root: {
+        maxHeight: 160,
+        height: '40vw',
+      },
+    },
   },
   palette: {
     primary: {
