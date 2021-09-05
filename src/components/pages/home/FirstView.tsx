@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import MediaQuery from 'react-responsive';
 import { BaseButton } from '../../uiParts/index';
+/* images */
+import logo from '/public/images/logo_transparent.png';
 
 const FirstView = () => {
-  const logo = require('../../../image/logo_transparent.png');
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);

@@ -20,7 +20,8 @@ type TProps = {
 
 const BaseMediaCard = ({
   className = '',
-  image = 'https://firebasestorage.googleapis.com/v0/b/chocomint-c4a70.appspot.com/o/my-img%2Fno_img.jpg?alt=media&token=294a7188-bb19-44f1-b581-58909649a322',
+  // image = 'https://firebasestorage.googleapis.com/v0/b/chocomint-c4a70.appspot.com/o/my-img%2Fno_img.jpg?alt=media&token=294a7188-bb19-44f1-b581-58909649a322',
+  image = '/images/no_img.jpg',
   title = '',
   description = '',
   isShowButton = true,
@@ -40,7 +41,8 @@ const BaseMediaCard = ({
         <CardMedia
           // image="https://image.faspa.epark.jp/shop_data/cake-takeout-sweetsguide/images/material/F10295251000001_item06.jpg"
           image={image}
-          title="Contemplative Reptile"
+          component="img"
+          title="チョコミント商品の画像"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
