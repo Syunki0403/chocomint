@@ -8,7 +8,8 @@ body {
 .firstview-section {
     position: relative;
     height: 70vh;
-    background-image: url("../../image/chocomint_top.jpg");
+    /* background-image: url("https://firebasestorage.googleapis.com/v0/b/chocomint-c4a70.appspot.com/o/my-img%2Fchocomint_top.jpg?alt=media&token=35d94f08-aacb-478d-ad0e-dcfa5ef0f8f4"); */
+    background-image: url("/images/chocomint_top.jpg");
     background-repeat: no-repeat;
     background-position: 50% 50%;
     z-index: -1;
@@ -53,6 +54,60 @@ body {
 .component_about-chocomintou p {
     line-height: 250%;
     font-size: 1.1rem;
+}
+
+.component_chocomint-katsu {
+    position: relative;
+}
+
+.component_chocomint-katsu_pc {
+    display: flex;
+}
+
+.component_chocomint-katsu_pc p {
+    line-height: 250%;
+    font-size: 1.1rem;
+}
+
+.component_chocomint-katsu_img::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 105%;
+    backdrop-filter: blur(2.5px);
+    top: -5px;
+    left: 0;
+}
+
+.component_chocomint-katsu_img img {
+    border-radius: 15%;
+    height: 180px;
+    min-height: 100px;
+}
+
+.component_chocomint-katsu_text1 {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 38%;
+    left: 50%;
+    font-size: 1.6rem;
+    width: 100%;
+    color: white;
+    font-weight: 600;
+    width: fit-content;
+}
+
+.component_chocomint-katsu_text2 {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 65%;
+    left: 50%;
+    font-size: 0.8rem;
+    width: 100%;
+    color: white;
+    font-weight: 600;
+    line-height: 150%;
+    width: fit-content;
 }
 
 /********************************
@@ -109,7 +164,8 @@ body {
         position: absolute;
         content: "";
         display: block;
-        background-image: url("../../image/wave.png");
+        /* background-image: url("https://firebasestorage.googleapis.com/v0/b/chocomint-c4a70.appspot.com/o/my-img%2Fwave.png?alt=media&token=d9f01630-dbf4-4b81-b921-7d6f3a60ef87"); */
+        background-image: url("/images/wave.png");
         background-repeat: no-repeat;
         background-size: cover;
         width: 100%;
@@ -117,5 +173,12 @@ body {
         bottom: 0px;
         left: 0;
         z-index: -1;
+    }
+
+    .component_chocomint-katsu {
+        margin: 40px auto;
+        display: flex;
+        justify-content: center;
+        text-align: center;
     }
 }

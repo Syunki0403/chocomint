@@ -5,7 +5,6 @@ import { BaseButton } from '../../uiParts/index';
 
 const FirstView = () => {
   const logo = require('../../../image/logo_transparent.png');
-
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
@@ -18,7 +17,7 @@ const FirstView = () => {
           チョコミント商品共有サイト
         </h1>
         <div className="firstview-section_contents_img -mt-8 text-center">
-          <Image src={logo} alt="ロゴ" width={460} height={460} layout="responsive" />
+          <Image src={logo} alt="ロゴ" width={40} height={40} layout="responsive" />
         </div>
         {mounted && (
           <MediaQuery query="(max-width: 767px)">

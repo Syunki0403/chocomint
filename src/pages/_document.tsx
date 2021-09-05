@@ -12,7 +12,7 @@ export default class MyDocument extends Document {
         <Head>
           <meta name="theme-color" content={theme.palette.primary.main} />
           <meta content="チョコミント商品の情報共有アプリです" name="description" />
-          <meta property="og:image" content="/logo.png" />
+          <meta property="og:image" content="/images/logo.png" />
           <meta property="og:site_name" content="チョコミントウ" />
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
           <link

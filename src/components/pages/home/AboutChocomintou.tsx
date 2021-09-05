@@ -1,5 +1,4 @@
 import React from 'react';
-import { COLORS } from '../../../const/color';
 
 const AboutChocomintou = () => {
   return (
