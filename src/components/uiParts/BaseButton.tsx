@@ -36,7 +36,7 @@ const BaseButton = ({
       height: 48,
       padding: '0 30px',
       '&:hover': {
-        backgroundColor: color === 'mint' ? COLORS.DARK_MINT : 'rgba(0, 0, 0, 0.1)',
+        backgroundColor: color === 'mint' ? COLORS.DARK_MINT : 'rgba(55, 51, 49, 0.8)',
       },
     },
   })(Button);
