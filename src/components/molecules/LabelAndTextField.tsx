@@ -11,7 +11,7 @@ type TProps = {
   fullWidth?: boolean;
   id: string;
   label: string;
-  onBlur: any;
+  onBlur?: any;
   onChange: any;
   placeholder?: string;
   required?: boolean;
