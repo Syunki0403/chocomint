@@ -11,12 +11,14 @@ export default class MyDocument extends Document {
       <Html lang="ja-JP">
         <Head>
           <meta name="theme-color" content={theme.palette.primary.main} />
-          <meta content="チョコミント商品の情報共有アプリです" name="description" />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          />
+          <meta content="チョコミント商品の情報共有サイトです" name="description" />
+          <meta property="og:image" content="/images/logo.png" />
+          <meta property="og:site_name" content="チョコミントウ" />
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap"
+            rel="stylesheet"
+          ></link>
         </Head>
         <body>
           <Main />
