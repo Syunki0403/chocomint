@@ -5,7 +5,7 @@ import {
   AboutChocomintou,
   RecommendItems,
   ChocomintKatsu,
-  Header
+  Header,
 } from '../components/pages/home/index';
 import { BaseDivider } from '../components/uiParts/index';
 
