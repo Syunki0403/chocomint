@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -22,6 +22,11 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Header = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const classes = useStyles();
 
   const handleDrawerToggle = () => {
@@ -33,17 +38,27 @@ const Header = () => {
       <AppBar position="static" style={{ background: '#68e8d8' }}>
         <Toolbar className="flex justify-between h-20 text-black">
           <div className="flex items-center sm:w-2/5 md:w-full">
-            <MediaQuery query="(min-width: 768px)">
-              <Image src={logo} alt="ロゴ" width={50} height={50} className="mx-2 cursor-pointer" />
-              <div className="mx-2 cursor-pointer">チョコミントウとは</div>
-              <div className="mx-2 cursor-pointer">商品検索</div>
-              <div className="mx-2 cursor-pointer">商品登録</div>
-            </MediaQuery>
-            <MediaQuery query="(max-width: 767px)">
-              <IconButton color="inherit" onClick={handleDrawerToggle}>
-                <MenuIcon />
-              </IconButton>
-            </MediaQuery>
+            {mounted && (
+              <MediaQuery query="(min-width: 768px)">
+                <Image
+                  src={logo}
+                  alt="ロゴ"
+                  width={50}
+                  height={50}
+                  className="mx-2 cursor-pointer"
+                />
+                <div className="mx-2 cursor-pointer">チョコミントウとは</div>
+                <div className="mx-2 cursor-pointer">商品検索</div>
+                <div className="mx-2 cursor-pointer">商品登録</div>
+              </MediaQuery>
+            )}
+            {mounted && (
+              <MediaQuery query="(max-width: 767px)">
+                <IconButton color="inherit" onClick={handleDrawerToggle}>
+                  <MenuIcon />
+                </IconButton>
+              </MediaQuery>
+            )}
           </div>
           <div className="flex items-center justify-end sm:w-3/5 md:w-full">
             <div className="mx-4 cursor-pointer">ログイン</div>
