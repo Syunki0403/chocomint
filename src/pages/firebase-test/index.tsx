@@ -10,8 +10,7 @@ const FirebaseTest: React.FC = () => {
     const review = getReview();
     console.log(user, '________user');
     console.log(item, '________item');
-    console.log(review, '________review')
-
+    console.log(review, '________review');
   }, []);
 
   return <div>aaaaaa</div>;
