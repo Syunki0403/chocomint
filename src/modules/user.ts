@@ -1,9 +1,9 @@
 import firebase, { db } from '../firebase/index';
 
 type User = {
-  name: string,
-  email: string,
-  password: string,
+  name: string;
+  email: string;
+  password: string;
 };
 
 // todo: 引数にuidを追加
@@ -15,8 +15,8 @@ export const getUser = async () => {
 
     if (!colDoc.exists) {
       // todo: 404ページへ？
-      throw new Error("userドキュメントが取得できませんでした");
-    };
+      throw new Error('userドキュメントが取得できませんでした');
+    }
 
     return colDoc.data();
   } catch (e) {
@@ -26,8 +26,8 @@ export const getUser = async () => {
 
 export const postUser = async (values: User) => {
   try {
-    const docId = db.collection("users").doc().id;
-    db.collection("users").doc(docId).set({
+    const docId = db.collection('users').doc().id;
+    db.collection('users').doc(docId).set({
       docId: docId,
       name: values.name,
       email: values.email,

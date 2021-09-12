@@ -1,12 +1,12 @@
 import firebase, { db } from '../firebase/index';
 
 type Review = {
-  image: string,
-  score: number,
-  score_chocolate: number,
-  score_mint: number,
-  sentence: number,
-}
+  image: string;
+  score: number;
+  score_chocolate: number;
+  score_mint: number;
+  sentence: number;
+};
 
 // todo: 引数にreviewIdを追加
 export const getReview = async () => {
@@ -17,8 +17,8 @@ export const getReview = async () => {
 
     if (!colDoc.exists) {
       // todo: 404ページへ？
-      throw new Error("reviewドキュメントが取得できませんでした");
-    };
+      throw new Error('reviewドキュメントが取得できませんでした');
+    }
 
     return colDoc.data();
   } catch (e) {
@@ -28,8 +28,8 @@ export const getReview = async () => {
 
 export const postReview = async (values: Review) => {
   try {
-    const docId = db.collection("items").doc().id;
-    db.collection("items").doc(docId).set({
+    const docId = db.collection('items').doc().id;
+    db.collection('items').doc(docId).set({
       docId: docId,
       image: values.image,
       score: values.score,

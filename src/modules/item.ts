@@ -1,15 +1,15 @@
 import firebase, { db } from '../firebase/index';
 
 type Item = {
-  constructor: string,
-  images: string[],
-  name: string,
-  price: number,
-  score: number,
-  score_chocolate: number,
-  score_mint: number,
-  shops: string[],
-  supplement: string,
+  constructor: string;
+  images: string[];
+  name: string;
+  price: number;
+  score: number;
+  score_chocolate: number;
+  score_mint: number;
+  shops: string[];
+  supplement: string;
 };
 
 // todo: 引数にitemIdを追加
@@ -21,8 +21,8 @@ export const getItem = async () => {
 
     if (!colDoc.exists) {
       // todo: 404ページへ？
-      throw new Error("itemドキュメントが取得できませんでした");
-    };
+      throw new Error('itemドキュメントが取得できませんでした');
+    }
 
     return colDoc.data();
   } catch (e) {
@@ -32,8 +32,8 @@ export const getItem = async () => {
 
 export const postItem = async (values: Item) => {
   try {
-    const docId = db.collection("items").doc().id;
-    db.collection("items").doc(docId).set({
+    const docId = db.collection('items').doc().id;
+    db.collection('items').doc(docId).set({
       docId: docId,
       constructor: values.constructor,
       images: values.images,
