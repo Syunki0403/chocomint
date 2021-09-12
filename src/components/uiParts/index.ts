@@ -4,3 +4,4 @@ export { default as BaseErrorText } from './BaseErrorText';
 export { default as BaseDivider } from './BaseDivider';
 export { default as BaseMediaCard } from './BaseMediaCard';
 export { default as BaseSelectField } from './BaseSelectField';
+export { default as BasePagination } from './BasePagination';

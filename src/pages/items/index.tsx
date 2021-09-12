@@ -1,6 +1,6 @@
 import React from 'react';
 /* components */
-import { SearchItems } from '../../components/pages/items/index';
+import { SearchItems, ItemList } from '../../components/pages/items/index';
 import { BaseDivider } from '../../components/uiParts/index';
 
 const Items: React.FC = () => {
@@ -8,6 +8,7 @@ const Items: React.FC = () => {
     <div>
       <SearchItems />
       <BaseDivider />
+      <ItemList />
     </div>
   );
 };

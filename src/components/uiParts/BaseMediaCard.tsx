@@ -11,6 +11,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 type TProps = {
   className?: string;
+  imgClassName?: string;
   image?: string;
   title?: string;
   description?: string;
@@ -20,7 +21,7 @@ type TProps = {
 
 const BaseMediaCard = ({
   className = '',
-  // image = 'https://firebasestorage.googleapis.com/v0/b/chocomint-c4a70.appspot.com/o/my-img%2Fno_img.jpg?alt=media&token=294a7188-bb19-44f1-b581-58909649a322',
+  imgClassName = '',
   image = '/images/no_img.jpg',
   title = '',
   description = '',
@@ -29,8 +30,6 @@ const BaseMediaCard = ({
 }: TProps) => {
   const CustomCard = withStyles({
     root: {
-      // SP
-      // width: '40vw',
       width: width === 'full' ? '100%' : '30%',
     },
   })(Card);
@@ -39,16 +38,26 @@ const BaseMediaCard = ({
     <CustomCard className={className}>
       <CardActionArea>
         <CardMedia
-          // image="https://image.faspa.epark.jp/shop_data/cake-takeout-sweetsguide/images/material/F10295251000001_item06.jpg"
+          className={imgClassName}
           image={image}
           component="img"
           title="チョコミント商品の画像"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography
+            className="media-card_maintypography"
+            gutterBottom
+            variant="h6"
+            component="h3"
+          >
             {title}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography
+            className="media-card_subtypography"
+            color="textSecondary"
+            variant="body2"
+            component="p"
+          >
             {description}
           </Typography>
         </CardContent>
