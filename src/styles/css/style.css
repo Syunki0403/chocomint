@@ -4,11 +4,18 @@ body {
     color: rgb(55, 51, 49);
 }
 
+/********** コンポーネント **********/
+.media-card_subtypography {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+
 /********** ホーム **********/
 .firstview-section {
     position: relative;
     height: 70vh;
-    /* background-image: url("https://firebasestorage.googleapis.com/v0/b/chocomint-c4a70.appspot.com/o/my-img%2Fchocomint_top.jpg?alt=media&token=35d94f08-aacb-478d-ad0e-dcfa5ef0f8f4"); */
     background-image: url("/images/chocomint_top.jpg");
     background-repeat: no-repeat;
     background-position: 50% 50%;
@@ -116,6 +123,16 @@ body {
 
 ********************************/
 @media only screen and (max-width: 767px) {
+    /********** コンポーネント **********/
+    .media-card_maintypography {
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+
+    .media-card_subtypography {
+        display: none;
+    }
+
     /********** ホーム **********/
     .firstview-section {
         position: relative;
@@ -164,7 +181,6 @@ body {
         position: absolute;
         content: "";
         display: block;
-        /* background-image: url("https://firebasestorage.googleapis.com/v0/b/chocomint-c4a70.appspot.com/o/my-img%2Fwave.png?alt=media&token=d9f01630-dbf4-4b81-b921-7d6f3a60ef87"); */
         background-image: url("/images/wave.png");
         background-repeat: no-repeat;
         background-size: cover;
@@ -180,5 +196,11 @@ body {
         display: flex;
         justify-content: center;
         text-align: center;
+    }
+
+    /********** アイテム **********/
+
+    .sp-cardimg_size {
+        height: 25vw;
     }
 }

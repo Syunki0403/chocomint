@@ -8,7 +8,7 @@ import { TUser, TSignupUser } from '../../types/User';
 const FormikTest = () => {
   const validate = (values: TSignupUser) => {
     let errors = {} as TUser;
-    errors = signupAndLoginValidate(values, errors);
+    errors = signupAndLoginValidate<TUser>(values, errors);
     return errors;
   };
 
