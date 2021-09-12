@@ -12,7 +12,7 @@ type TBaseTextField = {
   focus?: boolean;
   fullWidth?: boolean;
   id: string;
-  onBlur: any;
+  onBlur?: any;
   onChange: any;
   placeholder?: string;
   required?: boolean;
@@ -22,6 +22,7 @@ type TBaseTextField = {
   variant?: TVariant;
   multiline?: boolean;
   rows?: number;
+  InputProps?: any;
 };
 
 const BaseTextField = ({
@@ -40,6 +41,7 @@ const BaseTextField = ({
   variant = 'outlined',
   multiline = false,
   rows,
+  InputProps,
 }: TBaseTextField) => {
   const inputEl = useRef<HTMLDivElement | null>(null);
 
@@ -52,7 +54,7 @@ const BaseTextField = ({
   return (
     <TextField
       inputRef={inputEl}
-      placeholder={placeholder ? `例：${placeholder} ` : ''}
+      placeholder={placeholder}
       {...{
         className,
         disabled,
@@ -67,6 +69,7 @@ const BaseTextField = ({
         variant,
         multiline,
         rows,
+        InputProps,
       }}
     />
   );

@@ -1,5 +1,6 @@
 import { createTheme } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
+import { COLORS } from '../../const/color';
 
 const theme = createTheme({
   overrides: {
@@ -75,7 +76,11 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: '#226cd6',
+      // main: '#226cd6',
+      main: COLORS.MINT,
+    },
+    secondary: {
+      main: COLORS.DARK_MINT,
     },
     error: {
       main: red.A400,
