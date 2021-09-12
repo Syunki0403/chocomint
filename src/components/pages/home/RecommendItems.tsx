@@ -10,21 +10,21 @@ const RecommendItems = () => {
         <h2>話題のチョコミント</h2>
         <div className="flex flex-col items-center md:flex-row md:justify-between">
           <BaseMediaCard
-            className="md:w-3/10 w-full"
+            className="w-full md:w-3/10"
             description="PABLO mini チョコミント"
             image="https://image.faspa.epark.jp/shop_data/cake-takeout-sweetsguide/images/material/F10295251000001_item06.jpg"
             isShowButton={false}
           />
           <div className="py-4 md:p-0"></div>
           <BaseMediaCard
-            className="md:w-3/10 w-full"
+            className="w-full md:w-3/10"
             description="PABLO mini チョコミント"
             image="https://image.faspa.epark.jp/shop_data/cake-takeout-sweetsguide/images/material/F10295251000001_item06.jpg"
             isShowButton={false}
           />
           <div className="py-4 md:p-0"></div>
           <BaseMediaCard
-            className="md:w-3/10 w-full"
+            className="w-full md:w-3/10"
             description="PABLO mini チョコミント"
             isShowButton={false}
           />
