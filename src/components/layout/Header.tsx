@@ -35,8 +35,8 @@ const Header = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{ background: '#68e8d8' }}>
-        <Toolbar className="flex justify-between h-20 text-black">
+      <AppBar position="static" className="relative" style={{ background: '#68e8d8' }}>
+        <Toolbar className="flex justify-between h-14">
           <div className="flex items-center sm:w-2/5 md:w-full">
             {mounted && (
               <MediaQuery query="(min-width: 768px)">
@@ -45,7 +45,7 @@ const Header = () => {
                   alt="ロゴ"
                   width={50}
                   height={50}
-                  className="mx-2 cursor-pointer"
+                  className="img-noBlurred mx-2 cursor-pointer"
                 />
                 <div className="mx-2 cursor-pointer">チョコミントウとは</div>
                 <div className="mx-2 cursor-pointer">商品検索</div>
@@ -62,14 +62,22 @@ const Header = () => {
           </div>
           <div className="flex items-center justify-end sm:w-3/5 md:w-full">
             <div className="mx-4 cursor-pointer">ログイン</div>
-            <BaseButton color="white">新規登録</BaseButton>
+            <BaseButton className="px-4 h-10" color="white">
+              新規登録
+            </BaseButton>
           </div>
         </Toolbar>
       </AppBar>
       <Drawer variant="temporary" open={drawerOpen} onClose={handleDrawerToggle}>
         <List>
           <ListItem>
-            <Image src={logo} alt="ロゴ" width={50} height={50} className="mx-2 cursor-pointer" />
+            <Image
+              src={logo}
+              alt="ロゴ"
+              width={50}
+              height={50}
+              className="img-noBlurred mx-2 cursor-pointer"
+            />
           </ListItem>
           <ListItem>
             <div className="mx-2 cursor-pointer">チョコミントウとは</div>
