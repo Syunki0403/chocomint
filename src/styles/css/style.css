@@ -4,6 +4,11 @@ body {
     color: rgb(55, 51, 49);
 }
 
+/********** 汎用的 **********/
+.img-noBlurred {
+    image-rendering: -webkit-optimize-contrast;
+}
+
 /********** コンポーネント **********/
 .media-card_subtypography {
     display: -webkit-box;
