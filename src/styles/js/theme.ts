@@ -73,6 +73,11 @@ const theme = createTheme({
         height: '40vw',
       },
     },
+    MuiDrawer: {
+      paper: {
+        backgroundColor: COLORS.LIGHT_MINT,
+      },
+    },
   },
   palette: {
     primary: {
