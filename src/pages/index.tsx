@@ -7,19 +7,18 @@ import {
   ChocomintKatsu,
 } from '../components/pages/home/index';
 import { BaseDivider } from '../components/uiParts/index';
-import { Header } from '../components/layout/index';
+import { CommonWrapTemplate } from '../components/layout/index';
 
 const Home: React.FC = () => {
   return (
-    <div>
-      <Header />
+    <CommonWrapTemplate>
       <FirstView />
       <RecommendItems />
       <BaseDivider />
       <AboutChocomintou />
       <BaseDivider />
       <ChocomintKatsu />
-    </div>
+    </CommonWrapTemplate>
   );
 };
 
