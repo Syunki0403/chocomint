@@ -98,7 +98,9 @@ const ItemPost = () => {
             )}
           </LabelAndTextField>
           <div className="mb-6">
-            <p>販売期間</p>
+            <p>
+              販売期間<span className="text-sm">（※不明の場合、未入力で）</span>
+            </p>
             <div className="flex items-center mb-3 mt-2">
               <p className="w-14">開始</p>
               <BaseTextField
