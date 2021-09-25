@@ -1,4 +1,11 @@
-import { blank, maxNum, format, passwordRangeAndHankakuEngNum, hankakuEngNum } from './message';
+import {
+  blank,
+  maxNum,
+  format,
+  passwordRangeAndHankakuEngNum,
+  hankakuEngNum,
+  lowerThanDate,
+} from './message';
 import { validEmail, validHankakuEngNum } from './regExp';
 
 // 空確認
@@ -40,4 +47,15 @@ export const emailFormat = {
     return email !== '' && !validEmail.test(email);
   },
   message: (label: string) => format(label),
+};
+
+// 期間の整合性確認
+export const periodCheck = {
+  check: (periodStart: string, periodEnd: string): boolean => {
+    const startDate = new Date(periodStart);
+    const endDate = new Date(periodEnd);
+
+    return startDate > endDate;
+  },
+  message: () => lowerThanDate(),
 };
