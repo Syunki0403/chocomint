@@ -37,6 +37,7 @@ export const postReview = async (values: Review) => {
       score_mint: values.score_mint,
       sentence: values.sentence,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
     });
 
     // todo: post完了後のページへ

@@ -1,9 +1,8 @@
 import firebase, { db } from '../firebase/index';
 
 type User = {
+  authId: string;
   name: string;
-  email: string;
-  password: string;
 };
 
 // todo: 引数にuidを追加
@@ -29,10 +28,10 @@ export const postUser = async (values: User) => {
     const docId = db.collection('users').doc().id;
     db.collection('users').doc(docId).set({
       docId: docId,
+      authId: values.authId,
       name: values.name,
-      email: values.email,
-      password: values.password,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
     });
 
     // todo: post完了後のページへ

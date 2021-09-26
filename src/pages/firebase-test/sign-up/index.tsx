@@ -8,6 +8,7 @@ import { BaseButton, BaseErrorText } from 'src/components/uiParts';
 import { useFormik } from 'formik';
 import { signupAndLoginValidate } from 'src/validate/user/signupAndLogin';
 import { TUser, TSignupUser } from '../../../types/User';
+import { postUser } from 'src/modules/user';
 
 const SignUp = () => {
   const router = useRouter();
@@ -38,17 +39,33 @@ const SignUp = () => {
   const _handleOnSubmit = (values: TSignupUser) => {
     if (isMounted) setIsLoading(true);
 
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(values.email, values.password)
+    _createUser(values)
       .then((res) => {
         if (isMounted) setIsLoading(false);
         router.push('/firebase-test');
       })
       .catch((error) => {
         if (isMounted) setIsLoading(false);
+        console.error(error);
         alert(error);
       });
+  };
+
+  const _createUser = async (values: TSignupUser) => {
+    await firebase
+      .auth()
+      .createUserWithEmailAndPassword(values.email, values.password);
+
+    const currentUser = firebase.auth().currentUser;
+    if (!currentUser) {
+      throw Error('登録に失敗しました');
+    }
+
+    const userValues = {
+      authId: currentUser?.uid,
+      name: values.name,
+    }
+    await postUser(userValues);
   };
 
   return (

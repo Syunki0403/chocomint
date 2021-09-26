@@ -45,6 +45,7 @@ export const postItem = async (values: Item) => {
       shops: values.shops,
       supplement: values.supplement,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
     });
 
     // todo: post完了後のページへ
