@@ -52,9 +52,7 @@ const SignUp = () => {
   };
 
   const _createUser = async (values: TSignupUser) => {
-    await firebase
-      .auth()
-      .createUserWithEmailAndPassword(values.email, values.password);
+    await firebase.auth().createUserWithEmailAndPassword(values.email, values.password);
 
     const currentUser = firebase.auth().currentUser;
     if (!currentUser) {
@@ -64,7 +62,7 @@ const SignUp = () => {
     const userValues = {
       authId: currentUser?.uid,
       name: values.name,
-    }
+    };
     await postUser(userValues);
   };
 
