@@ -2,7 +2,7 @@ export type TItem = {
   id: string;
   name: string;
   images: string[];
-  price: number | null;
+  price: number;
   shops: string;
   period_start: string;
   period_end: string;
@@ -15,6 +15,12 @@ export type TItem = {
   updated_at: Date;
 };
 
-export type TPostItem = Pick<TItem, 'name' | 'price' | 'shops' | 'period_start' | 'period_end'>;
+export type TPostItem = {
+  name: string;
+  price: number | null;
+  shops: string;
+  period_start: string;
+  period_end: string;
+};
 
 export type TPostItemError = Record<keyof TItem, string>;

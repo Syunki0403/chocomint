@@ -31,6 +31,7 @@ const ItemPost = () => {
     },
     validate,
     onSubmit: (values) => {
+      console.log(typeof values.price);
       console.log('form data', values);
     },
   });
@@ -79,6 +80,7 @@ const ItemPost = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.price ? formik.values.price : ''}
+            type="number"
           >
             {formik.errors.price && formik.touched.price && (
               <BaseErrorText>{formik.errors.price}</BaseErrorText>
