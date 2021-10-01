@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { postItem, uploadImage } from '../../../modules/item';
 /* components */
 import { CommonWrapTemplate } from '../../../components/layout/index';
 import { LabelAndTextField } from '../../../components/molecules/index';
@@ -7,7 +8,7 @@ import { useFormik } from 'formik';
 import { PhotosUpload, FiveStarScore } from '../../../components/layout/index';
 /* validate */
 import { postItemValidate } from '../../../validate/item/postItem';
-import { TPostItem, TPostItemError } from '../../../types/Item';
+import { TItemValidate, TItemValidateError, TPostItem } from '../../../types/Item';
 
 const ItemPost = () => {
   const [photos, setPhotos] = useState<File[]>([]);
@@ -15,9 +16,9 @@ const ItemPost = () => {
   const [scoreChocolate, setScoreChocolate] = useState(0);
   const [score, setScore] = useState(0);
 
-  const validate = (values: TPostItem) => {
-    let errors = {} as TPostItemError;
-    errors = postItemValidate<TPostItemError>(values, errors);
+  const validate = (values: TItemValidate) => {
+    let errors = {} as TItemValidateError;
+    errors = postItemValidate<TItemValidateError>(values, errors);
     return errors;
   };
 
@@ -28,11 +29,32 @@ const ItemPost = () => {
       shops: '',
       period_start: '',
       period_end: '',
+      supplement: '',
     },
     validate,
-    onSubmit: (values) => {
-      console.log(typeof values.price);
-      console.log('form data', values);
+    onSubmit: async (values) => {
+      if (typeof values.price === 'number') {
+        const promises: Array<Promise<any>> = [];
+
+        photos.map((photo) => {
+          promises.push(uploadImage(photo));
+        });
+        const imageUrls: string[] = await Promise.all(promises);
+
+        const itemObj: TPostItem = {
+          name: values.name,
+          images: imageUrls,
+          price: values.price,
+          shops: values.shops,
+          period_start: values.period_start,
+          period_end: values.period_end,
+          score_mint: scoreMint,
+          score_chocolate: scoreChocolate,
+          score: score,
+          supplement: values.supplement,
+        };
+        postItem(itemObj);
+      }
     },
   });
 
@@ -142,6 +164,17 @@ const ItemPost = () => {
             <p>評価</p>
             <FiveStarScore handleScore={handleScore} scoreName="five-star_score" />
           </div>
+          <LabelAndTextField
+            wrapClass="mb-6"
+            FieldClass="mt-2"
+            id="supplement"
+            label="補足"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.supplement}
+            multiline={true}
+            rows={3}
+          ></LabelAndTextField>
           <div className="mt-10 text-center">
             <BaseButton className="px-16" type="submit" size="large">
               投稿

@@ -1,7 +1,7 @@
-import { TPostItemError, TPostItem } from '../../types/Item';
+import { TItemValidateError, TItemValidate } from '../../types/Item';
 import { validBlank, periodCheck } from '../index';
 
-export const postItemValidate = <T>(values: TPostItem, errors: TPostItemError): T => {
+export const postItemValidate = <T>(values: TItemValidate, errors: TItemValidateError): T => {
   // 名前
   if ('name' in values) {
     if (validBlank.check(values.name)) {
