@@ -6,3 +6,8 @@ export const changeYMD = (date: Date) => {
   const result = y + '-' + m + '-' + d;
   return result;
 };
+
+// 値段を文字列表記に変換
+export const PriceToYen = (price: number) => {
+  return price.toLocaleString() + '円';
+};
