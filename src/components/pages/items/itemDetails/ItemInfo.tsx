@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MediaQuery from 'react-responsive';
 import { BaseButton, BaseSwiper } from '../../../uiParts/index';
+import { PriceToYen } from '../../../../utils/function';
 
 const ItemInfo = () => {
   const [mounted, setMounted] = useState(false);
@@ -36,7 +37,7 @@ const ItemInfo = () => {
           )}
           <div className="mb-3">
             <p className="font-bold">価格</p>
-            <p>￥1200</p>
+            <p>{PriceToYen(1234567)}</p>
           </div>
           <div className="mb-3">
             <p className="font-bold">販売店</p>
@@ -49,12 +50,10 @@ const ItemInfo = () => {
           <div className="mb-3">
             <p className="font-bold">チョコ感</p>
             <span className="star5_rating" data-rate="0"></span>
-            <p></p>
           </div>
           <div className="mb-3">
             <p className="font-bold">評価</p>
             <span className="star5_rating" data-rate="5"></span>
-            <p></p>
           </div>
           <div className="mb-3">
             <p className="font-bold">補足</p>

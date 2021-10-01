@@ -14,6 +14,8 @@ type TProps = {
   size?: 'large' | 'medium' | 'small';
   variant?: 'contained' | 'outlined' | 'text';
   color?: 'mint' | 'white';
+  startIcon?: ReactNode;
+  endIcon?: ReactNode;
 };
 
 const BaseButton = ({
@@ -26,6 +28,8 @@ const BaseButton = ({
   type = 'button',
   variant = 'outlined',
   color = 'mint',
+  startIcon,
+  endIcon,
 }: TProps) => {
   const CustomButton = withStyles({
     root: {
@@ -60,6 +64,8 @@ const BaseButton = ({
       size={size}
       type={type}
       variant={variant}
+      startIcon={startIcon}
+      endIcon={endIcon}
     >
       {children}
     </CustomButton>
