@@ -6,7 +6,8 @@ import { signupAndLoginValidate } from '../../../validate/user/signupAndLogin';
 /* components */
 import Image from 'next/image';
 import logo from '/public/images/logo_transparent.png';
-import { BaseTextField, BaseButton, BaseErrorText } from 'src/components/uiParts';
+import { BaseButton, BaseErrorText } from 'src/components/uiParts';
+import { LabelAndTextField } from 'src/components/molecules/index';
 
 const LogInTemplate = () => {
   const validate = (values: TLoginUser) => {
@@ -30,40 +31,35 @@ const LogInTemplate = () => {
     <div className="px-8 py-12 w-screen h-screen bg-green-300">
       <div className="mx-auto md:w-3/5">
         <div className="flex flex-col items-center mx-auto pb-4 w-52">
-          <Link href="/">
-            <a>
-              <Image src={logo} alt="ロゴ" width={150} height={150} className="cursor-pointer" />
-            </a>
-          </Link>
+          <Image src={logo} alt="ロゴ" width={150} height={150} />
           <h1>ログイン</h1>
         </div>
         <div className="pb-6">
-          <div className="pb-2">メールアドレス</div>
-          <BaseTextField
+          <LabelAndTextField
             id="email"
+            label="メールアドレス"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             value={formik.values.email}
-            placeholder="example@chocomint.com"
-            className="bg-white rounded"
-          />
-          {formik.errors.email && formik.touched.email && (
-            <BaseErrorText>{formik.errors.email}</BaseErrorText>
-          )}
+          >
+            {formik.errors.email && formik.touched.email && (
+              <BaseErrorText>{formik.errors.email}</BaseErrorText>
+            )}
+          </LabelAndTextField>
         </div>
         <div>
-          <div className="pb-2">パスワード</div>
-          <BaseTextField
+          <LabelAndTextField
             id="password"
+            label="パスワード"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             value={formik.values.password}
             type="password"
-            className="bg-white rounded"
-          />
-          {formik.errors.password && formik.touched.password && (
-            <BaseErrorText>{formik.errors.password}</BaseErrorText>
-          )}
+          >
+            {formik.errors.password && formik.touched.password && (
+              <BaseErrorText>{formik.errors.password}</BaseErrorText>
+            )}
+          </LabelAndTextField>
         </div>
         <div className="py-10 text-center">
           <BaseButton className="px-4 h-10" color="white">
