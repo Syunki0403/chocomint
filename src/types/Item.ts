@@ -1,3 +1,8 @@
+type UserInfo = {
+  id: string;
+  name: string;
+};
+
 export type TItem = {
   id: string;
   name: string;
@@ -10,7 +15,7 @@ export type TItem = {
   score_chocolate: number;
   score: number;
   supplement: string;
-  user_id: string;
+  user_info: UserInfo;
   created_at: Date;
   updated_at: Date;
 };
