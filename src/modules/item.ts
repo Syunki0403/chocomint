@@ -1,7 +1,7 @@
 import Router from 'next/router';
 import ItemDetails from 'src/pages/items/[id]';
 import firebase, { db, storage } from '../firebase/index';
-import { TPostItem } from '../types/Item';
+import { TPostItem, DBItemObj } from '../types/Item';
 
 // todo: 引数にitemIdを追加
 export const getItem = async () => {
@@ -27,7 +27,7 @@ export const postItem = async (item: TPostItem) => {
     console.log(item);
 
     // const docId = db.collection('items').doc().id;
-    const itemObj: any = {
+    const itemObj: DBItemObj = {
       name: item.name,
       images: item.images,
       price: item.price,
@@ -38,7 +38,10 @@ export const postItem = async (item: TPostItem) => {
       score_chocolate: item.score_chocolate,
       score: item.score,
       supplement: item.supplement,
-      user_id: 'test-user',
+      user_info: {
+        id: 'test1234',
+        name: '田中太郎',
+      },
       created_at: firebase.firestore.Timestamp.now().toDate(),
       updated_at: firebase.firestore.Timestamp.now().toDate(),
     };
