@@ -1,6 +1,7 @@
+import Router from 'next/router';
 import ItemDetails from 'src/pages/items/[id]';
 import firebase, { db, storage } from '../firebase/index';
-import { TPostItem, DBItemObj } from '../types/Item';
+import { TPostItem } from '../types/Item';
 
 // todo: 引数にitemIdを追加
 export const getItem = async () => {
@@ -43,7 +44,7 @@ export const postItem = async (item: TPostItem) => {
     };
     await db.collection('items').doc().set(itemObj);
 
-    // todo: post完了後のページへ
+    Router.push('/items');
   } catch (e) {
     console.error(e);
   }
