@@ -1,22 +1,26 @@
 import React, { useState } from 'react';
+import { postReview } from '../../../../modules/review';
+import { useRouter } from 'next/router';
 /* components */
-import { CommonWrapTemplate } from '../../../components/layout/index';
-import { LabelAndTextField } from '../../../components/molecules/index';
-import { BaseButton, BaseErrorText } from '../../../components/uiParts/index';
+import { CommonWrapTemplate } from '../../../../components/layout/index';
+import { LabelAndTextField } from '../../../../components/molecules/index';
+import { BaseButton, BaseErrorText } from '../../../../components/uiParts/index';
 import { useFormik } from 'formik';
-import { FiveStarScore } from '../../../components/layout/index';
+import { FiveStarScore } from '../../../../components/layout/index';
 /* validate */
-import { postReviewValidate } from '../../../validate/review/postReview';
-import { TPostReview, TReview } from '../../../types/Review';
+import { postReviewValidate } from '../../../../validate/review/postReview';
+import { TReviewValidate, TItemValidateError, TPostReview } from '../../../../types/Review';
 
 const ItemReview = () => {
   const [scoreMint, setScoreMint] = useState(0);
   const [scoreChocolate, setScoreChocolate] = useState(0);
   const [score, setScore] = useState(0);
+  const router = useRouter();
+  const { id } = router.query;
 
-  const validate = (values: TPostReview) => {
-    let errors = {} as TReview;
-    errors = postReviewValidate<TReview>(values, errors);
+  const validate = (values: TReviewValidate) => {
+    let errors = {} as TItemValidateError;
+    errors = postReviewValidate<TItemValidateError>(values, errors);
     return errors;
   };
 
@@ -26,7 +30,14 @@ const ItemReview = () => {
     },
     validate,
     onSubmit: (values) => {
-      console.log('form data', values);
+      const reviewObj: TPostReview = {
+        item_id: id as string,
+        sentence: values.sentence,
+        score_mint: scoreMint,
+        score_chocolate: scoreChocolate,
+        score: score,
+      };
+      postReview(reviewObj);
     },
   });
 

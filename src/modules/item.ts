@@ -23,9 +23,6 @@ export const getItem = async () => {
 
 export const postItem = async (item: TPostItem) => {
   try {
-    console.log('postItem');
-    console.log(item);
-
     // const docId = db.collection('items').doc().id;
     const itemObj: DBItemObj = {
       name: item.name,
