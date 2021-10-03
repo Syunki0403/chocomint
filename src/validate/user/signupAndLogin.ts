@@ -2,13 +2,13 @@ import { TUserForm, TUser } from '../../types/User';
 import { validBlank, validMaxNum, emailFormat, validRange, validhankakuEngNum } from '../index';
 
 export const signupAndLoginValidate = <T>(values: TUserForm, errors: TUser): T => {
-  // 名前
+  // ユーザー名
   if ('name' in values) {
     if (validBlank.check(values.name)) {
-      errors.name = validBlank.message('名前');
+      errors.name = validBlank.message('ユーザー名');
     }
     if (validMaxNum.check(values.name, 50)) {
-      errors.name = validMaxNum.message('名前', 50);
+      errors.name = validMaxNum.message('ユーザー名', 50);
     }
   }
   // メールアドレス

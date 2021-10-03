@@ -48,6 +48,11 @@ const theme = createTheme({
         },
       },
     },
+    MuiInputBase: {
+      root: {
+        backgroundColor: 'white',
+      },
+    },
     MuiOutlinedInput: {
       root: {
         minWidth: 200,
