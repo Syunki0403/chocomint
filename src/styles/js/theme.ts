@@ -1,6 +1,7 @@
 import { createTheme } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
 import { COLORS } from '../../const/color';
+import { NoEncryption } from '@material-ui/icons';
 
 const theme = createTheme({
   overrides: {
@@ -46,6 +47,11 @@ const theme = createTheme({
         '@media (min-width: 600px)': {
           top: 8,
         },
+      },
+    },
+    MuiInputBase: {
+      root: {
+        backgroundColor: 'white',
       },
     },
     MuiOutlinedInput: {

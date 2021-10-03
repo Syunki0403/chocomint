@@ -36,8 +36,8 @@ const SignUpTemplate = () => {
 
   return (
     <div className="px-8 py-12 w-screen h-screen bg-green-300">
-      <div className="mx-auto md:w-3/5">
-        <div className="flex flex-col items-center mx-auto pb-4 w-52">
+      <div className="mx-auto md:w-1/2">
+        <div className="flex flex-col items-center mb-10 mx-auto w-52">
           <Image src={logo} alt="ロゴ" width={150} height={150} />
           <h1>新規登録</h1>
         </div>
@@ -48,7 +48,7 @@ const SignUpTemplate = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.name}
-            required={true}
+            labelClass="font-bold"
           >
             {formik.errors.name && formik.touched.name && (
               <BaseErrorText>{formik.errors.name}</BaseErrorText>
@@ -62,6 +62,7 @@ const SignUpTemplate = () => {
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             value={formik.values.email}
+            labelClass="font-bold"
           >
             {formik.errors.email && formik.touched.email && (
               <BaseErrorText>{formik.errors.email}</BaseErrorText>
@@ -76,6 +77,7 @@ const SignUpTemplate = () => {
             onChange={formik.handleChange}
             value={formik.values.password}
             type="password"
+            labelClass="font-bold"
           >
             {formik.errors.password && formik.touched.password && (
               <BaseErrorText>{formik.errors.password}</BaseErrorText>
