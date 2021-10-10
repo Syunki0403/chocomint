@@ -63,7 +63,7 @@ export const uploadImage = (image: File) => {
 
   return uploadTask.then(() => {
     // 完了時に正常なアップロード処理を行う
-    return uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+    return uploadTask.snapshot.ref.getDownloadURL().then((downloadURL: string) => {
       return downloadURL;
     });
   });
