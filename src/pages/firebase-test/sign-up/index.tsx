@@ -7,7 +7,7 @@ import { LabelAndTextField } from 'src/components/molecules';
 import { BaseButton, BaseErrorText } from 'src/components/uiParts';
 import { useFormik } from 'formik';
 import { signupAndLoginValidate } from 'src/validate/user/signupAndLogin';
-import { TUser, TSignupUser } from '../../../types/User';
+import { TSignupUser, TUserValidateError } from '../../../types/User';
 import { postUser } from 'src/modules/user';
 
 const SignUp = () => {
@@ -19,8 +19,8 @@ const SignUp = () => {
   }, []);
 
   const validate = (values: TSignupUser) => {
-    let errors = {} as TUser;
-    errors = signupAndLoginValidate<TUser>(values, errors);
+    let errors = {} as TUserValidateError;
+    errors = signupAndLoginValidate<TUserValidateError>(values, errors);
     return errors;
   };
 

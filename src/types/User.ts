@@ -5,12 +5,16 @@ export type TUser = {
   updated_at: Date;
 };
 
-export type TSignupUser = {
+export type TUserValidate = {
   name: string;
   email: string;
   password: string;
 };
 
-export type TLoginUser = Omit<TSignupUser, 'name'>;
+export type TUserValidateError = Record<keyof TUserValidate, string>;
+
+export type TSignupUser = TUserValidate;
+
+export type TLoginUser = Omit<TUserValidate, 'name'>;
 
 export type TUserForm = TSignupUser | TLoginUser;

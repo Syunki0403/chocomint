@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { useFormik } from 'formik';
-import { TUser, TLoginUser } from '../../../types/User';
+import { TLoginUser, TUserValidateError } from '../../../types/User';
 import { signupAndLoginValidate } from '../../../validate/user/signupAndLogin';
 /* components */
 import Image from 'next/image';
@@ -11,8 +11,8 @@ import { LabelAndTextField } from 'src/components/molecules/index';
 
 const LogInTemplate = () => {
   const validate = (values: TLoginUser) => {
-    let errors = {} as TUser;
-    errors = signupAndLoginValidate<TUser>(values, errors);
+    let errors = {} as TUserValidateError;
+    errors = signupAndLoginValidate<TUserValidateError>(values, errors);
     return errors;
   };
 

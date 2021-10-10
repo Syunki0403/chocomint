@@ -4,7 +4,7 @@ import Loader from 'react-loader-spinner';
 import firebase from 'src/firebase';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/dist/client/router';
-import { TLoginUser, TUser } from '../../../types/User';
+import { TLoginUser, TUserValidateError } from '../../../types/User';
 import { LabelAndTextField } from 'src/components/molecules';
 import { BaseButton, BaseErrorText } from 'src/components/uiParts';
 import { signupAndLoginValidate } from 'src/validate/user/signupAndLogin';
@@ -18,8 +18,8 @@ const Login = () => {
   }, []);
 
   const validate = (values: TLoginUser) => {
-    let errors = {} as TUser;
-    errors = signupAndLoginValidate<TUser>(values, errors);
+    let errors = {} as TUserValidateError;
+    errors = signupAndLoginValidate<TUserValidateError>(values, errors);
     return errors;
   };
 
