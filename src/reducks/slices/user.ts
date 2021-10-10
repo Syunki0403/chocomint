@@ -10,8 +10,8 @@ export const initialState: UserState = {
   user: {
     id: '0000',
     name: 'test',
-    email: 'test@gmail.com',
-    password: 'password000',
+    created_at: new Date(),
+    updated_at: new Date(),
   },
 };
 
@@ -28,8 +28,8 @@ export const userSlice = createSlice({
       // action.payloadプロパティに、Action Creatorに渡された引数が入っている
       state.user.id = ranStr;
       state.user.name = action.payload.name;
-      state.user.email = action.payload.email;
-      state.user.password = action.payload.password;
+      state.user.created_at = action.payload.created_at;
+      state.user.updated_at = action.payload.updated_at;
     },
   },
 });

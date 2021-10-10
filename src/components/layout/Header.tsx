@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -61,10 +62,18 @@ const Header = () => {
             )}
           </div>
           <div className="flex items-center justify-end sm:w-3/5 md:w-full">
-            <div className="mx-4 cursor-pointer">ログイン</div>
-            <BaseButton className="px-4 h-10" color="white">
-              新規登録
-            </BaseButton>
+            <Link href="/login">
+              <a>
+                <div className="mx-4 cursor-pointer">ログイン</div>
+              </a>
+            </Link>
+            <Link href="/signup">
+              <a>
+                <BaseButton className="px-4 h-10" color="white">
+                  新規登録
+                </BaseButton>
+              </a>
+            </Link>
           </div>
         </Toolbar>
       </AppBar>

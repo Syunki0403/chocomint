@@ -1,12 +1,6 @@
+import Router from 'next/router';
 import firebase, { db } from '../firebase/index';
-
-type Review = {
-  image: string;
-  score: number;
-  score_chocolate: number;
-  score_mint: number;
-  sentence: number;
-};
+import { TPostReview, DBReviewObj } from '../types/Review';
 
 // todo: 引数にreviewIdを追加
 export const getReview = async () => {
@@ -26,21 +20,24 @@ export const getReview = async () => {
   }
 };
 
-export const postReview = async (values: Review) => {
+export const postReview = async (review: TPostReview) => {
   try {
-    const docId = db.collection('items').doc().id;
-    db.collection('items').doc(docId).set({
-      docId: docId,
-      image: values.image,
-      score: values.score,
-      score_chocolate: values.score_chocolate,
-      score_mint: values.score_mint,
-      sentence: values.sentence,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
-    });
+    const reviewObj: DBReviewObj = {
+      item_id: review.item_id,
+      sentence: review.sentence,
+      score_mint: review.score_mint,
+      score_chocolate: review.score_chocolate,
+      score: review.score,
+      user_info: {
+        id: 'test1234',
+        name: '田中太郎',
+      },
+      created_at: firebase.firestore.Timestamp.now().toDate(),
+      updated_at: firebase.firestore.Timestamp.now().toDate(),
+    };
+    await db.collection('reviews').doc().set(reviewObj);
 
-    // todo: post完了後のページへ
+    Router.push('/items');
   } catch (e) {
     console.error(e);
   }

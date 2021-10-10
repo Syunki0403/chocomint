@@ -25,7 +25,7 @@ export const getUser = async () => {
 
 export const postUser = async (values: User) => {
   try {
-    db.collection('users').doc().set({
+    db.collection('users').doc(values.authId).set({
       docId: values.authId,
       name: values.name,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
