@@ -7,3 +7,4 @@ export { default as BaseSelectField } from './BaseSelectField';
 export { default as BasePagination } from './BasePagination';
 export { default as BaseSwiper } from './BaseSwiper';
 export { default as BaseReviewCard } from './BaseReviewCard';
+export { default as BaseSnackbar } from './BaseSnackbar';
