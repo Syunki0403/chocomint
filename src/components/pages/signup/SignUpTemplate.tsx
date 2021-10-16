@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useFormik } from 'formik';
-import { TUser, TSignupUser } from '../../../types/User';
+import { TSignupUser, TUserValidateError } from '../../../types/User';
 import { signupAndLoginValidate } from '../../../validate/user/signupAndLogin';
 /* components */
 import Image from 'next/image';
@@ -17,8 +17,8 @@ const SignUpTemplate = () => {
   };
 
   const validate = (values: TSignupUser) => {
-    let errors = {} as TUser;
-    errors = signupAndLoginValidate<TUser>(values, errors);
+    let errors = {} as TUserValidateError;
+    errors = signupAndLoginValidate<TUserValidateError>(values, errors);
     return errors;
   };
 

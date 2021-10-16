@@ -1,7 +1,7 @@
-import { TUserForm, TUser } from '../../types/User';
+import { TUserForm, TUserValidateError } from '../../types/User';
 import { validBlank, validMaxNum, emailFormat, validRange, validhankakuEngNum } from '../index';
 
-export const signupAndLoginValidate = <T>(values: TUserForm, errors: TUser): T => {
+export const signupAndLoginValidate = <T>(values: TUserForm, errors: TUserValidateError): T => {
   // ユーザー名
   if ('name' in values) {
     if (validBlank.check(values.name)) {

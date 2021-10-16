@@ -3,6 +3,7 @@ import { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import store from '../reducks/store';
+import { ToastContainer } from 'react-toastify';
 /* material-ui */
 import { MuiThemeProvider, StylesProvider } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
@@ -13,6 +14,7 @@ import 'tailwindcss/tailwind.css';
 import '../styles/css/global.css';
 import '../styles/css/normalize.css';
 import '../styles/css/style.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   React.useEffect(() => {
@@ -30,6 +32,18 @@ export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
           <ThemeProvider theme={theme}>
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline  to build upon. */}
             <CssBaseline />
+            <ToastContainer
+              position="top-center"
+              autoClose={3000}
+              hideProgressBar
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss={false}
+              draggable
+              pauseOnHover={false}
+              theme="colored"
+            />
             <Component {...pageProps} />
           </ThemeProvider>
         </MuiThemeProvider>

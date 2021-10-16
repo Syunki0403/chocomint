@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { getItem } from 'src/modules/item';
 import { getReview } from 'src/modules/review';
 import { getUser } from 'src/modules/user';
+import Auth from './Auth';
 
 const FirebaseTest: React.FC = () => {
   useEffect(() => {
@@ -13,7 +14,11 @@ const FirebaseTest: React.FC = () => {
     console.log(review, '________review');
   }, []);
 
-  return <div>aaaaaa</div>;
+  return (
+    <div>
+      <Auth />
+    </div>
+  );
 };
 
 export default FirebaseTest;

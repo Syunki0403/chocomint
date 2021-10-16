@@ -1,7 +1,7 @@
 import Router from 'next/router';
-import ItemDetails from 'src/pages/items/[id]';
 import firebase, { db, storage } from '../firebase/index';
 import { TPostItem, DBItemObj } from '../types/Item';
+import { toast } from 'react-toastify';
 
 // todo: 引数にitemIdを追加
 export const getItem = async () => {
@@ -44,9 +44,14 @@ export const postItem = async (item: TPostItem) => {
     };
     await db.collection('items').doc().set(itemObj);
 
-    Router.push('/items');
+    await Router.push('/items').then(() => {
+      toast.success('商品登録が完了しました');
+    });
   } catch (e) {
     console.error(e);
+    toast.success('error', {
+      type: 'error',
+    });
   }
 };
 
@@ -63,7 +68,7 @@ export const uploadImage = (image: File) => {
 
   return uploadTask.then(() => {
     // 完了時に正常なアップロード処理を行う
-    return uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+    return uploadTask.snapshot.ref.getDownloadURL().then((downloadURL: string) => {
       return downloadURL;
     });
   });

@@ -1,6 +1,7 @@
 import Router from 'next/router';
 import firebase, { db } from '../firebase/index';
 import { TPostReview, DBReviewObj } from '../types/Review';
+import { toast } from 'react-toastify';
 
 // todo: 引数にreviewIdを追加
 export const getReview = async () => {
@@ -37,8 +38,13 @@ export const postReview = async (review: TPostReview) => {
     };
     await db.collection('reviews').doc().set(reviewObj);
 
-    Router.push('/items');
+    await Router.push('/items').then(() => {
+      toast.success('レビューが完了しました');
+    });
   } catch (e) {
     console.error(e);
+    toast.success('error', {
+      type: 'error',
+    });
   }
 };

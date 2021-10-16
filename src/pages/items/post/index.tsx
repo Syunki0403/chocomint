@@ -15,6 +15,7 @@ const ItemPost = () => {
   const [scoreMint, setScoreMint] = useState(0);
   const [scoreChocolate, setScoreChocolate] = useState(0);
   const [score, setScore] = useState(0);
+  const [flag, setFlag] = useState(true);
 
   const validate = (values: TItemValidate) => {
     let errors = {} as TItemValidateError;
@@ -33,7 +34,8 @@ const ItemPost = () => {
     },
     validate,
     onSubmit: async (values) => {
-      if (typeof values.price === 'number') {
+      if (flag && typeof values.price === 'number') {
+        setFlag(false);
         const promises: Array<Promise<any>> = [];
 
         photos.map((photo) => {
@@ -53,7 +55,7 @@ const ItemPost = () => {
           score: score,
           supplement: values.supplement,
         };
-        postItem(itemObj);
+        await postItem(itemObj);
       }
     },
   });
