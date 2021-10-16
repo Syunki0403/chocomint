@@ -2,13 +2,14 @@ import { combineReducers } from 'redux';
 import logger from 'redux-logger';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { userSlice, initialState as userInitialState } from './slices/user';
+import { snackbarSlice, initialState as snackbarInitialState } from './slices/snackbar';
 
 const rootReducer = combineReducers({
-  userState: userSlice.reducer,
+  snackbarState: snackbarSlice.reducer,
 });
 
 const preloadedState = () => {
-  return { userState: userInitialState };
+  return { snackbarState: snackbarInitialState };
 };
 
 // NOTE ログを本番環境には出ないようにする。

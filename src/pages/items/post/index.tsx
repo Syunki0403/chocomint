@@ -9,12 +9,20 @@ import { PhotosUpload, FiveStarScore } from '../../../components/layout/index';
 /* validate */
 import { postItemValidate } from '../../../validate/item/postItem';
 import { TItemValidate, TItemValidateError, TPostItem } from '../../../types/Item';
+/* customeHook */
+import { useSnackbarAction } from '../../../customeHook/index';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { setSnackbar } from '../../../reducks/slices/snackbar';
 
 const ItemPost = () => {
   const [photos, setPhotos] = useState<File[]>([]);
   const [scoreMint, setScoreMint] = useState(0);
   const [scoreChocolate, setScoreChocolate] = useState(0);
   const [score, setScore] = useState(0);
+  const snackbarAction = useSnackbarAction();
+
+  const dispatch = useDispatch();
 
   const validate = (values: TItemValidate) => {
     let errors = {} as TItemValidateError;
@@ -53,7 +61,16 @@ const ItemPost = () => {
           score: score,
           supplement: values.supplement,
         };
-        postItem(itemObj);
+
+        dispatch(
+          setSnackbar({
+            severity: 'success',
+            open: true,
+            text: 'テストメッセ',
+          }),
+        );
+
+        await postItem(itemObj);
       }
     },
   });
@@ -71,7 +88,7 @@ const ItemPost = () => {
   };
 
   return (
-    <CommonWrapTemplate>
+    <CommonWrapTemplate {...{ snackbarAction }}>
       <div className="mb-12 mt-6 mx-auto w-8/10 md:w-5/10">
         <form onSubmit={formik.handleSubmit}>
           <p className="text-center text-2xl font-bold">商品投稿</p>

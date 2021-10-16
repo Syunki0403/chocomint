@@ -44,7 +44,7 @@ export const postItem = async (item: TPostItem) => {
     };
     await db.collection('items').doc().set(itemObj);
 
-    Router.push('/items');
+    await Router.push('/items');
   } catch (e) {
     console.error(e);
   }

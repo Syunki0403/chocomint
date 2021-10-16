@@ -23,6 +23,7 @@ const useSnackbarAction = (): TSnackbar => {
     text,
     autoHideDuration = 4000,
   }: TSnackbarOpen) => {
+    console.log('handleSnackbarOpen');
     setOpen(true);
     setText(text);
     setSeverity(severity);
