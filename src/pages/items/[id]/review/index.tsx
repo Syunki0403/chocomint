@@ -15,6 +15,7 @@ const ItemReview = () => {
   const [scoreMint, setScoreMint] = useState(0);
   const [scoreChocolate, setScoreChocolate] = useState(0);
   const [score, setScore] = useState(0);
+  const [flag, setFlag] = useState(true);
   const router = useRouter();
   const { id } = router.query;
 
@@ -30,14 +31,17 @@ const ItemReview = () => {
     },
     validate,
     onSubmit: (values) => {
-      const reviewObj: TPostReview = {
-        item_id: id as string,
-        sentence: values.sentence,
-        score_mint: scoreMint,
-        score_chocolate: scoreChocolate,
-        score: score,
-      };
-      postReview(reviewObj);
+      if (flag) {
+        setFlag(false);
+        const reviewObj: TPostReview = {
+          item_id: id as string,
+          sentence: values.sentence,
+          score_mint: scoreMint,
+          score_chocolate: scoreChocolate,
+          score: score,
+        };
+        postReview(reviewObj);
+      }
     },
   });
 
