@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import firebase from 'src/firebase'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -23,7 +24,8 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Header = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const [isMounted, setMounted] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(false);
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -34,12 +36,28 @@ const Header = () => {
     setDrawerOpen(!drawerOpen);
   };
 
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      if (isMounted) {
+        setIsSignedIn(true);
+      }
+    } else {
+      if (isMounted) {
+        setIsSignedIn(false);
+      }
+    }
+  });
+
+  const _handleLogout = () => {
+    firebase.auth().signOut();
+  };
+
   return (
     <div className={classes.root}>
       <AppBar position="static" className="relative" style={{ background: '#68e8d8' }}>
         <Toolbar className="flex justify-between h-14">
           <div className="flex items-center sm:w-2/5 md:w-full">
-            {mounted && (
+            {isMounted && (
               <MediaQuery query="(min-width: 768px)">
                 <Image
                   src={logo}
@@ -53,7 +71,7 @@ const Header = () => {
                 <div className="mx-2 cursor-pointer">商品登録</div>
               </MediaQuery>
             )}
-            {mounted && (
+            {isMounted && (
               <MediaQuery query="(max-width: 767px)">
                 <IconButton color="inherit" onClick={handleDrawerToggle}>
                   <MenuIcon />
@@ -62,18 +80,28 @@ const Header = () => {
             )}
           </div>
           <div className="flex items-center justify-end sm:w-3/5 md:w-full">
-            <Link href="/login">
-              <a>
-                <div className="mx-4 cursor-pointer">ログイン</div>
-              </a>
-            </Link>
-            <Link href="/signup">
-              <a>
-                <BaseButton className="px-4 h-10" color="white">
-                  新規登録
-                </BaseButton>
-              </a>
-            </Link>
+            {isSignedIn ? (
+              <div>
+                <Link href="/">
+                  <a>ユーザー名</a>
+                </Link>
+              </div>
+            ) : (
+              <div className="flex items-center justify-end sm:w-3/5 md:w-full">
+                <Link href="/login">
+                  <a>
+                    <div className="mx-4 cursor-pointer">ログイン</div>
+                  </a>
+                </Link>
+                <Link href="/signup">
+                  <a>
+                    <BaseButton className="px-4 h-10" color="white">
+                    新規登録
+                    </BaseButton>
+                  </a>
+                </Link>
+              </div>
+            )}
           </div>
         </Toolbar>
       </AppBar>
