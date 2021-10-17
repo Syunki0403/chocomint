@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 /* components */
-import { Header } from './index';
+import { Header, Footer } from './index';
 
 type TCommonWrapTemplate = {
   children: ReactNode;
@@ -11,6 +11,7 @@ const CommonWrapTemplate = ({ children }: TCommonWrapTemplate) => {
     <>
       <Header />
       {children}
+      <Footer />
     </>
   );
 };
