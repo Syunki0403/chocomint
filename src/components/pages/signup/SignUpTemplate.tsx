@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import firebase from 'src/firebase'
+import firebase from 'src/firebase';
 import { useFormik } from 'formik';
-import { useRouter } from 'next/dist/client/router'
+import { useRouter } from 'next/dist/client/router';
 import { TSignupUser, TUserValidateError } from '../../../types/User';
 import { signupAndLoginValidate } from '../../../validate/user/signupAndLogin';
 /* components */

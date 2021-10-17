@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import firebase from 'src/firebase'
+import firebase from 'src/firebase';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -96,7 +96,7 @@ const Header = () => {
                 <Link href="/signup">
                   <a>
                     <BaseButton className="px-4 h-10" color="white">
-                    新規登録
+                      新規登録
                     </BaseButton>
                   </a>
                 </Link>
