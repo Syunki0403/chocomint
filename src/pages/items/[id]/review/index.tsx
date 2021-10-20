@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { postReview } from '../../../../modules/review';
 import { useRouter } from 'next/router';
+import Loader from 'react-loader-spinner';
 /* components */
 import { CommonWrapTemplate } from '../../../../components/layout/index';
-import { LabelAndTextField } from '../../../../components/molecules/index';
+import { LabelAndTextField, LoaderButton } from '../../../../components/molecules/index';
 import { BaseButton, BaseErrorText } from '../../../../components/uiParts/index';
 import { useFormik } from 'formik';
 import { FiveStarScore } from '../../../../components/layout/index';
@@ -16,8 +17,14 @@ const ItemReview = () => {
   const [scoreChocolate, setScoreChocolate] = useState(0);
   const [score, setScore] = useState(0);
   const [flag, setFlag] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const router = useRouter();
   const { id } = router.query;
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const validate = (values: TReviewValidate) => {
     let errors = {} as TItemValidateError;
@@ -32,7 +39,11 @@ const ItemReview = () => {
     validate,
     onSubmit: (values) => {
       if (flag) {
+        if (isMounted) {
+          setIsLoading(true);
+        }
         setFlag(false);
+
         const reviewObj: TPostReview = {
           item_id: id as string,
           sentence: values.sentence,
@@ -92,11 +103,15 @@ const ItemReview = () => {
             <p>評価</p>
             <FiveStarScore handleScore={handleScore} scoreName="five-star_score" />
           </div>
-          <div className="mt-10 text-center">
-            <BaseButton className="px-16" type="submit" size="large">
-              投稿
-            </BaseButton>
-          </div>
+          <LoaderButton
+            wrapClassName="relative mt-10 text-center"
+            buttonClassName="px-16"
+            buttonType="submit"
+            size="large"
+            isLoading={isLoading}
+          >
+            投稿
+          </LoaderButton>
         </form>
       </div>
     </CommonWrapTemplate>
