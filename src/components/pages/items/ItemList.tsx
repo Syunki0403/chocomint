@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BaseMediaCard } from '../../uiParts/index';
+import { getItemList } from '../../../modules/item';
+/* recoil */
+import { useRecoilState } from 'recoil';
+import { itemListState } from '../../../recoil/atoms/item';
 
 const ItemList = () => {
+  const [itemList, setItemList] = useRecoilState(itemListState);
+
+  useEffect(() => {
+    const resItemList = getItemList();
+    // resItemList.then((res) => {
+    //   if (res) setItemList(res);
+    // });
+  }, []);
+
+  console.log(itemList);
+
   return (
     <div>
       <div className="flex flex-wrap justify-between mx-auto my-6 w-8/10 md:justify-start">

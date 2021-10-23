@@ -2,6 +2,7 @@ import Router from 'next/router';
 import firebase, { db, storage } from '../firebase/index';
 import { TPostItem, DBItemObj } from '../types/Item';
 import { toast } from 'react-toastify';
+import { TItem } from '../types/Item';
 
 // todo: 引数にitemIdを追加
 export const getItem = async () => {
@@ -16,6 +17,39 @@ export const getItem = async () => {
     }
 
     return colDoc.data();
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+export const getItemList = async () => {
+  try {
+    db.collection('items')
+      .get()
+      .then((query) => {
+        const itemList: TItem[] = [];
+        query.forEach((doc) => {
+          const data = doc.data();
+          itemList.push({
+            id: doc.id,
+            name: data.name,
+            images: data.images,
+            price: data.price,
+            shops: data.shops,
+            period_start: data.period_start,
+            period_end: data.period_end,
+            score_mint: data.score_mint,
+            score_chocolate: data.score_chocolate,
+            score: data.score,
+            supplement: data.supplement,
+            user_info: data.user_info,
+            created_at: data.created_at,
+            updated_at: data.updated_at,
+          });
+        });
+        console.log(itemList);
+        return itemList;
+      });
   } catch (e) {
     console.error(e);
   }
