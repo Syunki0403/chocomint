@@ -1,18 +1,16 @@
 import React from 'react';
 import Link from 'next/link';
-import firebase from 'src/firebase';
 import { useFormik } from 'formik';
-import { useRouter } from 'next/dist/client/router';
 import { TLoginUser, TUserValidateError } from '../../../types/User';
 import { signupAndLoginValidate } from '../../../validate/user/signupAndLogin';
+import { BaseButton, BaseErrorText } from 'src/components/uiParts';
+import { LabelAndTextField } from 'src/components/molecules/index';
+import { signInWithEmailAndPassword } from 'src/firebase/auth';
 /* components */
 import Image from 'next/image';
 import logo from '/public/images/logo_transparent.png';
-import { BaseButton, BaseErrorText } from 'src/components/uiParts';
-import { LabelAndTextField } from 'src/components/molecules/index';
 
 const LogInTemplate = () => {
-  const router = useRouter();
   const validate = (values: TLoginUser) => {
     let errors = {} as TUserValidateError;
     errors = signupAndLoginValidate<TUserValidateError>(values, errors);
@@ -32,15 +30,8 @@ const LogInTemplate = () => {
   });
 
   const _handleOnSubmit = (values: TLoginUser) => {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(values.email, values.password)
-      .then((res) => {
-        router.push('/');
-      })
-      .catch((error) => {
-        alert(error);
-      });
+    const root = '/'
+    signInWithEmailAndPassword(values, root);
   };
 
   return (

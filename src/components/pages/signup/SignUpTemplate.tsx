@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import firebase from 'src/firebase';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/dist/client/router';
 import { TSignupUser, TUserValidateError } from '../../../types/User';
 import { signupAndLoginValidate } from '../../../validate/user/signupAndLogin';
+import { createUserWithEmailAndPassword, getCurrentUser } from 'src/firebase/auth';
 /* components */
 import Image from 'next/image';
 import logo from '/public/images/logo_transparent.png';
@@ -51,13 +51,11 @@ const SignUpTemplate = () => {
   };
 
   const _createUser = async (values: TSignupUser) => {
-    await firebase.auth().createUserWithEmailAndPassword(values.email, values.password);
-
-    const currentUser = firebase.auth().currentUser;
+    await createUserWithEmailAndPassword(values);
+    const currentUser = getCurrentUser();
     if (!currentUser) {
       throw Error('登録に失敗しました');
     }
-
     const userValues = {
       authId: currentUser?.uid,
       name: values.name,

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import firebase from 'src/firebase';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -13,6 +12,7 @@ import Image from 'next/image';
 import logo from '/public/images/logo_transparent.png';
 import { BaseButton } from 'src/components/uiParts';
 import MediaQuery from 'react-responsive';
+import { onAuthStateChanged, signOut } from 'src/firebase/auth';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,31 +26,18 @@ const Header = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [isMounted, setMounted] = useState(false);
   const [isSignedIn, setIsSignedIn] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   const classes = useStyles();
-
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
   };
-
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      if (isMounted) {
-        setIsSignedIn(true);
-      }
-    } else {
-      if (isMounted) {
-        setIsSignedIn(false);
-      }
-    }
-  });
-
   const _handleLogout = () => {
-    firebase.auth().signOut();
+    signOut();
   };
+
+  useEffect(() => {
+    setMounted(true);
+    onAuthStateChanged(isMounted, setIsSignedIn);
+  }, []);
 
   return (
     <div className={classes.root}>
