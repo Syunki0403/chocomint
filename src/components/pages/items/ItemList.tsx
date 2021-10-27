@@ -10,24 +10,24 @@ const ItemList = () => {
 
   useEffect(() => {
     const resItemList = getItemList();
-    // resItemList.then((res) => {
-    //   if (res) setItemList(res);
-    // });
-  }, []);
 
-  console.log(itemList);
+    resItemList.then((res) => {
+      if (res) {
+        setItemList(res);
+      }
+    });
+  }, []);
 
   return (
     <div>
       <div className="flex flex-wrap justify-between mx-auto my-6 w-8/10 md:justify-start">
-        {[...Array(5)].map((_, i) => (
+        {itemList.map((item, i) => (
           <div key={i} className="3xl:w-1/4 w-9/20 md:w-1/3">
             <BaseMediaCard
               className="mb-10 mx-auto w-full"
               imgClassName="sp-cardimg_size"
-              title="PABLO mini チョコミント"
-              description="チョコレートチーズタルトをこんがりと焼き上げ、ミントホイップクリームを絞りました。仕上げにくるんとカールしたチョコチップをあしらいました。爽快な香りのペパーミントホイップクリームとトロリととろけるチョコレートチーズタルトの味わいで、濃厚かつスッキリとした清涼感を同時にお楽しみいただけます。"
-              image="https://image.faspa.epark.jp/shop_data/cake-takeout-sweetsguide/images/material/F10295251000001_item06.jpg"
+              title={item.name}
+              image={item.images[0]}
               isShowButton={false}
             />
           </div>

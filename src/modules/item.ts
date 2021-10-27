@@ -22,12 +22,13 @@ export const getItem = async () => {
   }
 };
 
-export const getItemList = async () => {
+export const getItemList = async (): Promise<TItem[] | undefined> => {
   try {
-    db.collection('items')
+    const itemList: TItem[] = [];
+    await db
+      .collection('items')
       .get()
       .then((query) => {
-        const itemList: TItem[] = [];
         query.forEach((doc) => {
           const data = doc.data();
           itemList.push({
@@ -47,11 +48,11 @@ export const getItemList = async () => {
             updated_at: data.updated_at,
           });
         });
-        console.log(itemList);
-        return itemList;
       });
+    return itemList;
   } catch (e) {
     console.error(e);
+    return [];
   }
 };
 
