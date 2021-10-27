@@ -3,6 +3,7 @@ import { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import store from '../reducks/store';
+import { RecoilRoot } from 'recoil';
 import { ToastContainer } from 'react-toastify';
 /* material-ui */
 import { MuiThemeProvider, StylesProvider } from '@material-ui/core/styles';
@@ -26,7 +27,7 @@ export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   }, []);
 
   return (
-    <Provider store={store()}>
+    <RecoilRoot>
       <StylesProvider injectFirst>
         <MuiThemeProvider theme={theme}>
           <ThemeProvider theme={theme}>
@@ -48,6 +49,6 @@ export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
           </ThemeProvider>
         </MuiThemeProvider>
       </StylesProvider>
-    </Provider>
+    </RecoilRoot>
   );
 }
