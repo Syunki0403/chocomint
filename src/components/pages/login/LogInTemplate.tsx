@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { useFormik } from 'formik';
+import { useRouter } from 'next/router';
 import { TLoginUser, TUserValidateError } from '../../../types/User';
 import { signupAndLoginValidate } from '../../../validate/user/signupAndLogin';
 import { BaseButton, BaseErrorText } from 'src/components/uiParts';
@@ -11,6 +12,7 @@ import Image from 'next/image';
 import logo from '/public/images/logo_transparent.png';
 
 const LogInTemplate = () => {
+  const router = useRouter();
   const validate = (values: TLoginUser) => {
     let errors = {} as TUserValidateError;
     errors = signupAndLoginValidate<TUserValidateError>(values, errors);
@@ -29,9 +31,15 @@ const LogInTemplate = () => {
     },
   });
 
-  const _handleOnSubmit = (values: TLoginUser) => {
-    const root = '/'
-    signInWithEmailAndPassword(values, root);
+  const _handleOnSubmit = async (values: TLoginUser) => {
+    const root = '/';
+    await signInWithEmailAndPassword(values)
+      .then(() => {
+        return router.push(root);
+      })
+      .catch((error) => {
+        alert(error);
+      });
   };
 
   return (

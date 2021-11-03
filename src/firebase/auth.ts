@@ -24,11 +24,9 @@ export const getCurrentUser = () => {
   return firebase.auth().currentUser;
 };
 
-export const signInWithEmailAndPassword = (values: TLoginUser, root: string) => {
-  const router = useRouter();
+export const signInWithEmailAndPassword = async (values: TLoginUser) => {
   try {
-    firebase.auth().signInWithEmailAndPassword(values.email, values.password);
-    return router.push(root);
+    return await firebase.auth().signInWithEmailAndPassword(values.email, values.password);
   } catch (error) {
     alert(error);
   }
