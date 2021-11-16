@@ -1,10 +1,9 @@
 import React from 'react';
 import { AppProps } from 'next/app';
-import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
-import store from '../reducks/store';
 import { RecoilRoot } from 'recoil';
 import { ToastContainer } from 'react-toastify';
+import UseRecoil from '../recoil/UseRecoil';
 /* material-ui */
 import { MuiThemeProvider, StylesProvider } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
@@ -45,6 +44,7 @@ export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
               pauseOnHover={false}
               theme="colored"
             />
+            <UseRecoil />
             <Component {...pageProps} />
           </ThemeProvider>
         </MuiThemeProvider>

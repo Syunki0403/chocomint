@@ -7,10 +7,10 @@ import Auth from './Auth';
 const FirebaseTest: React.FC = () => {
   useEffect(() => {
     const user = getUser();
-    const item = getItem();
+    // const item = getItem();
     const review = getReview();
     console.log(user, '________user');
-    console.log(item, '________item');
+    // console.log(item, '________item');
     console.log(review, '________review');
   }, []);
 

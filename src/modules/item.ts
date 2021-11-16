@@ -4,10 +4,8 @@ import { TPostItem, DBItemObj } from '../types/Item';
 import { toast } from 'react-toastify';
 import { TItem } from '../types/Item';
 
-// todo: 引数にitemIdを追加
-export const getItem = async () => {
+export const getItem = async (itemId: string) => {
   try {
-    const itemId = 'xZE9h9Y5yjdkXjpaOl7J'; // todo: 後ほど削除
     const colRef = db.collection('items').doc(itemId);
     const colDoc = await colRef.get();
 

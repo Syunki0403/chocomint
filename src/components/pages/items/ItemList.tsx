@@ -1,22 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BaseMediaCard } from '../../uiParts/index';
-import { getItemList } from '../../../modules/item';
+import Router from 'next/router';
 /* recoil */
-import { useRecoilState } from 'recoil';
-import { itemListState } from '../../../recoil/atoms/item';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
+import { itemListState, itemState } from '../../../recoil/atoms/item';
+/* types */
+import { TItem } from '../../../types/Item';
 
 const ItemList = () => {
-  const [itemList, setItemList] = useRecoilState(itemListState);
+  const itemList = useRecoilValue(itemListState);
+  const setRecoItem = useSetRecoilState(itemState);
 
-  useEffect(() => {
-    const resItemList = getItemList();
-
-    resItemList.then((res) => {
-      if (res) {
-        setItemList(res);
-      }
-    });
-  }, []);
+  const handleCardClick = (item: TItem) => {
+    setRecoItem(item);
+    Router.push('/items/[id]', '/items/' + item.id);
+  };
 
   return (
     <div>
@@ -29,6 +27,7 @@ const ItemList = () => {
               title={item.name}
               image={item.images[0]}
               isShowButton={false}
+              onClick={() => handleCardClick(item)}
             />
           </div>
         ))}
