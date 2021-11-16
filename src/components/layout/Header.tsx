@@ -41,16 +41,29 @@ const Header = () => {
           <div className="flex items-center sm:w-2/5 md:w-full">
             {mounted && (
               <MediaQuery query="(min-width: 768px)">
-                <Image
-                  src={logo}
-                  alt="ロゴ"
-                  width={50}
-                  height={50}
-                  className="img-noBlurred mx-2 cursor-pointer"
-                />
+                <Link href="/">
+                  <a>
+                    <Image
+                      src={logo}
+                      alt="ロゴ"
+                      width={50}
+                      height={50}
+                      className="img-noBlurred mx-2 cursor-pointer"
+                    />
+                  </a>
+                </Link>
+
                 <div className="mx-2 cursor-pointer">チョコミントウとは</div>
-                <div className="mx-2 cursor-pointer">商品検索</div>
-                <div className="mx-2 cursor-pointer">商品登録</div>
+                <div className="mx-2">
+                  <Link href="/items">
+                    <a>商品検索</a>
+                  </Link>
+                </div>
+                <div className="mx-2">
+                  <Link href="/items/post">
+                    <a>商品登録</a>
+                  </Link>
+                </div>
               </MediaQuery>
             )}
             {mounted && (
@@ -92,10 +105,18 @@ const Header = () => {
             <div className="mx-2 cursor-pointer">チョコミントウとは</div>
           </ListItem>
           <ListItem>
-            <div className="mx-2 cursor-pointer">商品検索</div>
+            <div className="mx-2">
+              <Link href="/items">
+                <a>商品検索</a>
+              </Link>
+            </div>
           </ListItem>
           <ListItem>
-            <div className="mx-2 cursor-pointer">商品登録</div>
+            <div className="mx-2">
+              <Link href="/items/post">
+                <a>商品登録</a>
+              </Link>
+            </div>
           </ListItem>
         </List>
       </Drawer>
