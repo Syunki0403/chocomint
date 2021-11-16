@@ -1,4 +1,5 @@
 import React from 'react';
+import Router from 'next/router';
 /* material-ui */
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -17,6 +18,7 @@ type TProps = {
   description?: string;
   isShowButton?: boolean;
   width?: 'full' | 'normal';
+  onClick?: VoidFunction;
 };
 
 const BaseMediaCard = ({
@@ -27,6 +29,7 @@ const BaseMediaCard = ({
   description = '',
   isShowButton = true,
   width = 'normal',
+  onClick,
 }: TProps) => {
   const CustomCard = withStyles({
     root: {
@@ -36,7 +39,7 @@ const BaseMediaCard = ({
 
   return (
     <CustomCard className={className}>
-      <CardActionArea>
+      <CardActionArea onClick={onClick}>
         <CardMedia
           className={imgClassName}
           image={image}

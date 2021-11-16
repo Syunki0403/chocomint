@@ -1,6 +1,6 @@
 import Router from 'next/router';
 import firebase, { db } from '../firebase/index';
-import { TPostReview, DBReviewObj } from '../types/Review';
+import { TReview, TPostReview, DBReviewObj } from '../types/Review';
 import { toast } from 'react-toastify';
 
 // todo: 引数にreviewIdを追加
@@ -18,6 +18,35 @@ export const getReview = async () => {
     return colDoc.data();
   } catch (e) {
     console.error(e);
+  }
+};
+
+export const getReviews = async (): Promise<TReview[] | undefined> => {
+  try {
+    const reviews: TReview[] = [];
+    await db
+      .collection('reviews')
+      .get()
+      .then((query) => {
+        query.forEach((doc) => {
+          const data = doc.data();
+          reviews.push({
+            id: doc.id,
+            item_id: data.item_id,
+            sentence: data.sentence,
+            score_mint: data.score_mint,
+            score_chocolate: data.score_chocolate,
+            score: data.score,
+            user_info: data.user_info,
+            created_at: data.created_at,
+            updated_at: data.updated_at,
+          });
+        });
+      });
+    return reviews;
+  } catch (e) {
+    console.error(e);
+    return [];
   }
 };
 
